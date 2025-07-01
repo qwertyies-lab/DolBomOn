@@ -454,8 +454,50 @@ function renderAppointments() {
 
 // Render medications
 function renderMedications() {
+    renderSupplementSummary();
     renderMedicationSchedule();
     renderMedicationList();
+}
+
+// Populate the supplement summary table
+function renderSupplementSummary() {
+    const tbody = document.getElementById('supplement-summary-body');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    // Only show active medications that are 영양제(=supplements)
+    // For demo, treat all medications as supplements. You can filter by name or add a type property if needed.
+    const today = new Date().toISOString().split('T')[0];
+    const activeSupplements = medications.filter(med => med.isActive && (!med.endDate || new Date(med.endDate) >= new Date(today)) && new Date(med.startDate) <= new Date(today));
+
+    // Collect rows by time
+    let rows = [];
+    activeSupplements.forEach(med => {
+        med.times.forEach(time => {
+            // Extract pill count from dosage if possible (e.g., "2정" or "2알" or "2캡슐")
+            let count = '';
+            const match = med.dosage.match(/([0-9]+)(정|알|캡슐|포|개)?/);
+            if (match) count = match[1] + (match[2] || '');
+            else count = med.dosage;
+            rows.push({
+                time,
+                name: med.name,
+                count
+            });
+        });
+    });
+
+    // Sort by time
+    rows.sort((a, b) => a.time.localeCompare(b.time));
+
+    // Render rows
+    if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3">오늘 섭취할 영양제가 없습니다</td></tr>';
+    } else {
+        rows.forEach(row => {
+            tbody.innerHTML += `<tr><td>${row.time}</td><td>${row.name}</td><td>${row.count}</td></tr>`;
+        });
+    }
 }
 
 // Render medication schedule by time slots
@@ -610,6 +652,7 @@ function markMedicationTaken(medicationId, time, taken) {
 
 // Render routines
 function renderRoutines() {
+    renderRoutineVisualSummary();
     const routinesList = document.getElementById('routines-list');
     
     if (routines.length === 0) {
@@ -646,6 +689,50 @@ function renderRoutines() {
             </div>
         </div>
     `).join('');
+}
+
+function renderRoutineVisualSummary() {
+    // 추천 기상/취침 시간 (간단 랜덤 예시)
+    const wakeupTimes = ['06:30', '07:00', '07:30', '08:00'];
+    const sleepTimes = ['22:30', '23:00', '23:30', '00:00'];
+    const exercises = [
+        {
+            name: '걷기',
+            effect: '심혈관 건강, 스트레스 해소',
+            desc: '가볍게 30분 이상 걷기 운동을 해보세요.'
+        },
+        {
+            name: '스트레칭',
+            effect: '근육 이완, 유연성 향상',
+            desc: '아침/저녁으로 10분간 전신 스트레칭을 해보세요.'
+        },
+        {
+            name: '가벼운 근력운동',
+            effect: '근육 유지, 신진대사 촉진',
+            desc: '스쿼트, 팔굽혀펴기 등 집에서 할 수 있는 근력운동을 10~15분 해보세요.'
+        },
+        {
+            name: '요가',
+            effect: '유연성, 심신 안정',
+            desc: '간단한 요가 동작으로 하루를 시작하거나 마무리해보세요.'
+        }
+    ];
+    // 랜덤 추천
+    const wakeup = wakeupTimes[Math.floor(Math.random() * wakeupTimes.length)];
+    const sleep = sleepTimes[Math.floor(Math.random() * sleepTimes.length)];
+    const exercise = exercises[Math.floor(Math.random() * exercises.length)];
+
+    // DOM에 반영
+    const wakeupEl = document.getElementById('recommended-wakeup');
+    const sleepEl = document.getElementById('recommended-sleep');
+    const exerciseEl = document.getElementById('recommended-exercise');
+    if (wakeupEl) wakeupEl.textContent = wakeup;
+    if (sleepEl) sleepEl.textContent = sleep;
+    if (exerciseEl) {
+        exerciseEl.innerHTML = `<span class='exercise-name'>${exercise.name}</span>
+            <span class='exercise-effect'>${exercise.effect}</span>
+            <div class='exercise-desc'>${exercise.desc}</div>`;
+    }
 }
 
 // Render caregivers

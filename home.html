@@ -179,6 +179,25 @@
                     </button>
                 </div>
                 
+                <!-- Supplement Intake Visual Summary -->
+                <div class="supplement-summary">
+                    <h3><i class="fas fa-apple-alt"></i> 영양제 섭취 요약</h3>
+                    <div class="supplement-table-wrapper">
+                        <table class="supplement-table">
+                            <thead>
+                                <tr>
+                                    <th>시간</th>
+                                    <th>영양제</th>
+                                    <th>섭취량</th>
+                                </tr>
+                            </thead>
+                            <tbody id="supplement-summary-body">
+                                <!-- Supplement summary will be populated here by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
                 <!-- Today's Medication Schedule -->
                 <div class="medication-schedule">
                     <h3><i class="fas fa-clock"></i> 오늘의 복용 일정</h3>
@@ -253,6 +272,35 @@
                         <i class="fas fa-plus"></i> 루틴 추가
                     </button>
                 </div>
+                
+                <!-- Daily Routine Visual Summary -->
+                <div class="routine-visual-summary">
+                    <div class="routine-row">
+                        <div class="routine-card wakeup">
+                            <i class="fas fa-sun"></i>
+                            <div class="routine-label">추천 기상시간</div>
+                            <div class="routine-time" id="recommended-wakeup">07:00</div>
+                        </div>
+                        <div class="routine-card sleep">
+                            <i class="fas fa-moon"></i>
+                            <div class="routine-label">추천 취침시간</div>
+                            <div class="routine-time" id="recommended-sleep">23:00</div>
+                        </div>
+                    </div>
+                    <div class="routine-row">
+                        <div class="routine-card exercise">
+                            <i class="fas fa-dumbbell"></i>
+                            <div class="routine-label">오늘의 추천 운동</div>
+                            <div class="routine-exercise" id="recommended-exercise">
+                                <!-- JS will fill in exercise name -->
+                                <span class="exercise-name">걷기</span>
+                                <span class="exercise-effect">심혈관 건강, 스트레스 해소</span>
+                                <div class="exercise-desc">가볍게 30분 이상 걷기 운동을 해보세요.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="filters">
                     <select id="routine-filter" onchange="filterRoutines()">
                         <option value="all">모든 루틴</option>

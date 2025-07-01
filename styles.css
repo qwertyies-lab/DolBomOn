@@ -1484,4 +1484,165 @@ body {
     .medication-list {
         padding: 0.5rem;
     }
+}
+
+.supplement-summary {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(160, 214, 180, 0.10);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+.supplement-summary h3 {
+    background: linear-gradient(135deg, #FFCCB3 0%, #A0D6B4 100%);
+    color: #333;
+    margin: 0;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.supplement-table-wrapper {
+    overflow-x: auto;
+    padding: 1.5rem;
+}
+.supplement-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafa;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 1rem;
+}
+.supplement-table th, .supplement-table td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+}
+.supplement-table th {
+    background: #A0D6B4;
+    color: #fff;
+    font-weight: 600;
+}
+.supplement-table tr:last-child td {
+    border-bottom: none;
+}
+.supplement-table td {
+    color: #333;
+}
+@media (max-width: 768px) {
+    .supplement-summary h3 {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    .supplement-table-wrapper {
+        padding: 1rem;
+    }
+    .supplement-table th, .supplement-table td {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.95rem;
+    }
+}
+@media (max-width: 480px) {
+    .supplement-table th, .supplement-table td {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.2rem;
+    }
+}
+
+.routine-visual-summary {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.routine-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.routine-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(160, 214, 180, 0.10);
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    transition: box-shadow 0.2s;
+}
+.routine-card i {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+    color: #4A90E2;
+}
+.routine-card.wakeup i {
+    color: #FFD700;
+}
+.routine-card.sleep i {
+    color: #4A90E2;
+}
+.routine-card.exercise i {
+    color: #A0D6B4;
+}
+.routine-label {
+    font-size: 1.05rem;
+    color: #666;
+    font-weight: 600;
+}
+.routine-time {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 1px;
+}
+.routine-exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+.exercise-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4A90E2;
+}
+.exercise-effect {
+    font-size: 0.95rem;
+    color: #A0D6B4;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+.exercise-desc {
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+@media (max-width: 900px) {
+    .routine-card {
+        padding: 1.2rem 1rem;
+        min-width: 150px;
+    }
+}
+@media (max-width: 600px) {
+    .routine-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    .routine-card {
+        width: 100%;
+        min-width: 0;
+        padding: 1rem 0.5rem;
+    }
+    .routine-visual-summary {
+        gap: 1rem;
+    }
 } 
