@@ -1,3 +1,28 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCrVHrrlw8aUP9wRqkx0mbIfPYXT9yzSjE",
+  authDomain: "dolbomon-9cffb.firebaseapp.com",
+  projectId: "dolbomon-9cffb",
+  storageBucket: "dolbomon-9cffb.firebasestorage.app",
+  messagingSenderId: "925132660770",
+  appId: "1:925132660770:web:a0c2f83bcd28613e50ea7b",
+  measurementId: "G-0QXCKE69TT",
+  databaseURL: "https://dolbomon-9cffb-default-rtdb.asia-southeast1.firebasedatabase.app/"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 // Global data storage
 let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
 let medications = JSON.parse(localStorage.getItem('medications')) || [];

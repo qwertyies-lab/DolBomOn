@@ -93,12 +93,26 @@
             <a href="landing_new.html" class="login-back">← 메인으로 돌아가기</a>
         </div>
     </div>
-    <script>
-        // 로그인 폼 제출 시 home.html로 이동
-        document.querySelector('.login-form').addEventListener('submit', function(e) {
+    <script type="module">
+        import { auth } from './script.js';
+        import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+        // 로그인 폼 제출 시 Firebase 인증
+        document.querySelector('.login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // 실제 인증 로직 없이 바로 이동
-            window.location.href = 'home.html';
+            const username = document.querySelector('input[placeholder="아이디"]').value;
+            const password = document.querySelector('input[placeholder="비밀번호"]').value;
+            // 실제 서비스에서는 username과 email 매핑이 필요함. 여기서는 email 입력 대신 username을 email로 가정
+            let email = username;
+            if (!email.includes('@')) {
+                alert('이메일(또는 이메일 형식의 아이디)로 로그인해주세요.');
+                return;
+            }
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                window.location.href = 'home.html';
+            } catch (error) {
+                alert('로그인 실패: ' + (error.message || error.code));
+            }
         });
     </script>
 </body>
