@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돌봄온 회원가입</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .signup-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FAFAFA;
+        }
+        .signup-box {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 2.5rem 2rem 2rem 2rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .signup-box .logo-img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+        .signup-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #222;
+        }
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-row {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .form-row input {
+            flex: 1;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #A0D6B4;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FAFAFA;
+            transition: border 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border: 1.5px solid #4A90E2;
+            outline: none;
+        }
+        .signup-form input {
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #A0D6B4;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FAFAFA;
+            transition: border 0.2s;
+        }
+        .signup-form input:focus {
+            border: 1.5px solid #4A90E2;
+            outline: none;
+        }
+        .signup-btn {
+            background: #A0D6B4;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 0.9rem 0;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .signup-btn:hover {
+            background: #4A90E2;
+        }
+        .signup-back {
+            display: block;
+            margin-top: 2rem;
+            color: #4A90E2;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .signup-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-wrapper">
+        <div class="signup-box">
+            <img src="DolbomOn Logo.png" alt="돌봄온 로고" class="logo-img" />
+            <div class="signup-title">돌봄온 회원가입</div>
+            <div class="help-text" style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; text-align: left; background: #f8f9fa; padding: 0.8rem; border-radius: 6px; border-left: 3px solid #A0D6B4;">
+                <strong>📝 회원가입 안내</strong><br>
+                • 모든 필수 항목(*)을 정확히 입력해주세요<br>
+                • 아이디 중복확인과 휴대폰 인증을 완료해주세요<br>
+                • 개인정보는 안전하게 보호되며, 돌봄 서비스 제공 목적으로만 사용됩니다
+            </div>
+            <form class="signup-form">
+                <!-- 기본 정보 -->
+                <div class="form-group">
+                    <label>기본 정보</label>
+                    <div class="form-row">
+                        <input type="text" placeholder="이름" required autocomplete="name" />
+                        <input type="text" placeholder="성별" required list="gender-list" />
+                        <datalist id="gender-list">
+                            <option value="남성">남성</option>
+                            <option value="여성">여성</option>
+                        </datalist>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <input type="date" required />
+                </div>
+
+                <!-- 연락처 정보 -->
+                <div class="form-group">
+                    <label>연락처 정보</label>
+                    <input type="email" placeholder="이메일 주소" required autocomplete="email" />
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 비밀번호 재설정 및 서비스 알림에 사용됩니다
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <input type="tel" placeholder="01012345678" required autocomplete="tel" style="flex:2;" />
+                        <button type="button" class="signup-btn" style="flex:1; min-width:110px; padding:0.7rem 0; font-size:0.95rem; background:#FFCCB3; color:#222; margin:0;">인증번호 받기</button>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 휴대폰 번호를 입력하고 인증번호를 받아주세요
+                    </div>
+                    <input type="text" placeholder="인증번호 입력" required autocomplete="one-time-code" />
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • SMS로 전송된 6자리 인증번호를 입력해주세요
+                    </div>
+                </div>
+
+                <!-- 주소 정보 -->
+                <div class="form-group">
+                    <label>주소 정보</label>
+                    <div class="form-row">
+                        <input type="text" placeholder="우편번호" required />
+                        <button type="button" class="signup-btn" style="flex:1; min-width:110px; padding:0.7rem 0; font-size:0.95rem; background:#FFCCB3; color:#222; margin:0;">주소 검색</button>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 주소 검색 버튼을 클릭하여 정확한 주소를 입력해주세요
+                    </div>
+                    <input type="text" placeholder="기본주소" required />
+                    <input type="text" placeholder="상세주소" required />
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 상세주소는 건물명, 동/호수 등을 포함해주세요
+                    </div>
+                </div>
+
+                <!-- 계정 정보 -->
+                <div class="form-group">
+                    <label>계정 정보</label>
+                    <div class="form-row">
+                        <input type="text" placeholder="아이디" required autocomplete="username" style="flex:2;" />
+                        <button type="button" class="signup-btn" style="flex:1; min-width:110px; padding:0.7rem 0; font-size:0.95rem; background:#FFCCB3; color:#222; margin:0;">중복확인</button>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 아이디는 4자 이상, 영문/숫자/언더스코어(_)만 사용 가능합니다<br>
+                        • 로그인 시 아이디를 사용합니다
+                    </div>
+                    <input type="password" placeholder="비밀번호" required autocomplete="new-password" />
+                    <input type="password" placeholder="비밀번호 확인" required autocomplete="new-password" />
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 비밀번호는 6자 이상 입력해주세요
+                    </div>
+                </div>
+
+                <!-- 약관 동의 -->
+                <div class="form-group" style="text-align: left;">
+                    <label style="margin-bottom: 0.5rem;">약관 동의</label>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <input type="checkbox" id="terms" required style="width: auto; margin: 0;" />
+                        <label for="terms" style="margin: 0; font-size: 0.9rem;">이용약관 및 개인정보처리방침에 동의합니다</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="marketing" style="width: auto; margin: 0;" />
+                        <label for="marketing" style="margin: 0; font-size: 0.9rem;">마케팅 정보 수신에 동의합니다 (선택)</label>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
+                        • 이용약관 동의는 필수이며, 마케팅 정보 수신은 선택사항입니다<br>
+                        • 마케팅 정보 수신 동의 시 돌봄 서비스 관련 혜택과 정보를 받으실 수 있습니다
+                    </div>
+                </div>
+
+                <button type="submit" class="signup-btn">회원가입</button>
+            </form>
+            <a href="landing_new.html" class="signup-back">← 메인으로 돌아가기</a>
+        </div>
+    </div>
+
+    <script>
+        // 가상의 사용자 데이터베이스 (실제로는 서버에서 확인해야 함)
+        const existingUsernames = ['user1', 'user2', 'admin', 'test', 'demo', 'user123', 'testuser'];
+        
+        // DOM 요소들
+        const usernameInput = document.querySelector('input[placeholder="아이디"]');
+        const duplicateCheckBtn = document.querySelector('button:contains("중복확인")');
+        const signupForm = document.querySelector('.signup-form');
+        
+        // 중복확인 버튼 찾기
+        const duplicateCheckButton = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent === '중복확인');
+        
+        let isUsernameVerified = false;
+        let currentUsername = '';
+        
+        // 중복확인 기능
+        duplicateCheckButton.addEventListener('click', function() {
+            const username = usernameInput.value.trim();
+            
+            if (!username) {
+                showMessage('아이디를 입력해주세요.', 'error');
+                return;
+            }
+            
+            if (username.length < 4) {
+                showMessage('아이디는 4자 이상 입력해주세요.', 'error');
+                return;
+            }
+            
+            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                showMessage('아이디는 영문, 숫자, 언더스코어(_)만 사용 가능합니다.', 'error');
+                return;
+            }
+            
+            // 중복 확인 (실제로는 서버 API 호출)
+            setTimeout(() => {
+                if (existingUsernames.includes(username)) {
+                    showMessage('이미 사용 중인 아이디입니다.', 'error');
+                    isUsernameVerified = false;
+                    currentUsername = '';
+                } else {
+                    showMessage('사용 가능한 아이디입니다!', 'success');
+                    isUsernameVerified = true;
+                    currentUsername = username;
+                    duplicateCheckButton.textContent = '확인완료';
+                    duplicateCheckButton.style.background = '#A0D6B4';
+                    duplicateCheckButton.style.color = '#fff';
+                }
+            }, 500);
+        });
+        
+        // 아이디 입력 시 중복확인 상태 초기화
+        usernameInput.addEventListener('input', function() {
+            if (this.value !== currentUsername) {
+                isUsernameVerified = false;
+                currentUsername = '';
+                duplicateCheckButton.textContent = '중복확인';
+                duplicateCheckButton.style.background = '#FFCCB3';
+                duplicateCheckButton.style.color = '#222';
+                removeMessage();
+            }
+        });
+        
+        // 메시지 표시 함수
+        function showMessage(message, type) {
+            removeMessage();
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                padding: 0.5rem;
+                margin-top: 0.5rem;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                text-align: left;
+                ${type === 'success' ? 'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'}
+            `;
+            
+            usernameInput.parentNode.appendChild(messageDiv);
+        }
+        
+        // 메시지 제거 함수
+        function removeMessage() {
+            const existingMessage = document.querySelector('.message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+        }
+        
+        // 폼 제출 시 중복확인 검증
+        signupForm.addEventListener('submit', function(e) {
+            if (!isUsernameVerified) {
+                e.preventDefault();
+                showMessage('아이디 중복확인을 완료해주세요.', 'error');
+                return;
+            }
+            
+            // 다른 폼 검증 로직들...
+            const password = document.querySelector('input[placeholder="비밀번호"]').value;
+            const passwordConfirm = document.querySelector('input[placeholder="비밀번호 확인"]').value;
+            
+            if (password !== passwordConfirm) {
+                e.preventDefault();
+                showMessage('비밀번호가 일치하지 않습니다.', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                e.preventDefault();
+                showMessage('비밀번호는 6자 이상 입력해주세요.', 'error');
+                return;
+            }
+            
+            // 폼 제출 성공
+            alert('회원가입이 완료되었습니다!');
+        });
+    </script>
+</body>
+</html> 
