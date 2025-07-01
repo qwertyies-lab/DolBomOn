@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돌봄온 회원가입 - 계정 정보</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .signup-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FAFAFA;
+        }
+        .signup-box {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 2.5rem 2rem 2rem 2rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .signup-box .logo-img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+        .signup-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #222;
+        }
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-row {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .form-row input {
+            flex: 1;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #A0D6B4;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FAFAFA;
+            transition: border 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border: 1.5px solid #4A90E2;
+            outline: none;
+        }
+        .signup-form input {
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #A0D6B4;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FAFAFA;
+            transition: border 0.2s;
+        }
+        .signup-form input:focus {
+            border: 1.5px solid #4A90E2;
+            outline: none;
+        }
+        .signup-btn {
+            background: #A0D6B4;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 0.9rem 0;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .signup-btn:hover {
+            background: #4A90E2;
+        }
+        .signup-back {
+            display: block;
+            margin-top: 2rem;
+            color: #4A90E2;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .signup-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-wrapper">
+        <div class="signup-box">
+            <img src="DolbomOn Logo.png" alt="돌봄온 로고" class="logo-img" />
+            <div class="signup-title">돌봄온 회원가입 - 계정 정보</div>
+            <form class="signup-form">
+                <!-- 계정 정보 -->
+                <div class="form-group">
+                    <label>계정 정보</label>
+                    <div class="form-row">
+                        <input type="text" placeholder="아이디" required autocomplete="username" style="flex:2;" />
+                        <button type="button" class="signup-btn" style="flex:1; min-width:110px; padding:0.7rem 0; font-size:0.95rem; background:#FFCCB3; color:#222; margin:0;">중복확인</button>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 아이디는 4자 이상, 영문/숫자/언더스코어(_)만 사용 가능합니다<br>
+                        • 로그인 시 아이디를 사용합니다
+                    </div>
+                    <div style="position:relative; margin-bottom:1.2rem;">
+                        <input type="password" placeholder="비밀번호" required autocomplete="new-password" style="padding-right:2.5rem;" />
+                        <button type="button" class="toggle-password" tabindex="-1" style="position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:1.2rem; color:#888;">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div style="position:relative; margin-bottom:1.2rem;">
+                        <input type="password" placeholder="비밀번호 확인" required autocomplete="new-password" style="padding-right:2.5rem;" />
+                        <button type="button" class="toggle-password" tabindex="-1" style="position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:1.2rem; color:#888;">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <div id="pw-match-warning" style="display:none; color:#e74c3c; font-size:0.92rem; margin-top:0.3rem; text-align:left;">비밀번호가 일치하지 않습니다.</div>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.3rem; text-align: left;">
+                        • 비밀번호는 6자 이상 입력해주세요
+                    </div>
+                </div>
+                <!-- 약관 동의 -->
+                <div class="form-group" style="text-align: left;">
+                    <label style="margin-bottom: 0.5rem;">약관 동의</label>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <input type="checkbox" id="terms" required style="width: auto; margin: 0;" />
+                        <label for="terms" style="margin: 0; font-size: 0.9rem;">이용약관 및 개인정보처리방침에 동의합니다</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="marketing" style="width: auto; margin: 0;" />
+                        <label for="marketing" style="margin: 0; font-size: 0.9rem;">마케팅 정보 수신에 동의합니다 (선택)</label>
+                    </div>
+                    <div class="help-text" style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
+                        • 이용약관 동의는 필수이며, 마케팅 정보 수신은 선택사항입니다<br>
+                        • 마케팅 정보 수신 동의 시 돌봄 서비스 관련 혜택과 정보를 받으실 수 있습니다
+                    </div>
+                </div>
+                <button type="submit" class="signup-btn">회원가입</button>
+            </form>
+            <a href="signup_1.html" class="signup-back">← 이전 단계로 돌아가기</a>
+        </div>
+    </div>
+    <script type="module">
+        // 비밀번호 눈모양 토글 기능
+        Array.from(document.querySelectorAll('.toggle-password')).forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.querySelector('i').classList.remove('fa-eye');
+                    this.querySelector('i').classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    this.querySelector('i').classList.remove('fa-eye-slash');
+                    this.querySelector('i').classList.add('fa-eye');
+                }
+            });
+        });
+        // 비밀번호 일치 실시간 체크
+        const pwInput = document.querySelector('input[placeholder="비밀번호"]');
+        const pwConfirmInput = document.querySelector('input[placeholder="비밀번호 확인"]');
+        const pwWarning = document.getElementById('pw-match-warning');
+        function checkPwMatch() {
+            if (pwInput.value && pwConfirmInput.value && pwInput.value !== pwConfirmInput.value) {
+                pwWarning.style.display = 'block';
+            } else {
+                pwWarning.style.display = 'none';
+            }
+        }
+        pwInput.addEventListener('input', checkPwMatch);
+        pwConfirmInput.addEventListener('input', checkPwMatch);
+    </script>
+</body>
+</html> 
